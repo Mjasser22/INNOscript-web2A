@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <title>Liste des utulistaeur</title>
+    <title>liste_avis</title>
     <link rel="stylesheet" href="liste_employe.css">
+    <link rel="stylesheet" href="list_avis.css">
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    
@@ -11,7 +13,7 @@
 <body>
 
 <body>
-    <div class="container">
+<div class="container">
         <div class="navigation">
             <ul>
                 <li>
@@ -88,54 +90,67 @@
             </ul>
         </div>
    
+
     
         <h2 class="title">
             Liste des utulisteur</h1>
         <h2 class="inscription">
-            <p>TABLE OF USERS</p>
+            <p>TABLE</p>
+            <center>
+                <form action="chercher_avis.php" method="post">
+                <div class="InputContainer">
+  <input placeholder="Search.." id="chercher" class="input" name="chercher" type="text">
+                </form>
+
+</div>
+            </center>
+  
+
+    </form>           
         </h2>
     <table border="1" align="center" width="70%">
         <tr>
-            <th>Identity</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>ID_comment</th>
+            <th>ID_user</th>
+            <th>FIRST_Name</th>
+            <th>Last_name</th>
             <th>ADRESSE</th>
-            <th>password</th>
+            <th>email</th>
             <th>telephone</th>
             <th>num_passport</th>
             <th>genre</th>
             <th>pays</th>
-            <th>Delete</th>
-            <th>Update</th>
+            <th>Avis/5</th>
             
         </tr>
         <?php
-        require_once '../Controller/userC.php';
-        $employeC = new userC();
+        require_once '../Controller/CommentaireC.php';
+        $employeC = new CommentaireC();
         
         $list = $employeC->listEmployes();
 
         foreach ($list as $employe) {
         ?>
             <tr>
+                <td><?= $employe['id_comment']; ?></td>
                 <td><?= $employe['id']; ?></td>
                 <td><?= $employe['nom']; ?></td>
                 <td><?= $employe['prenom']; ?></td>
                 <td><?= $employe['email']; ?></td>
                 <td><?= $employe['adresse']; ?></td>
-                <td><?= $employe['password']; ?></td>
                 <td><?= $employe['telephone']; ?></td>
                 <td><?= $employe['num_passport']; ?></td>
                 <td><?= $employe['genre']; ?></td>
                 <td><?= $employe['pays']; ?></td>
+                <td><?= $employe['avis']; ?></td>
                 <form >
            <td>
             <div>
-<a href="Admintraitment.php?id=<?php echo $employe['id']; ?>">Delete</a>
+
+<a href="supprimer_avis.php?id_comment=<?php echo $employe['id_comment']; ?>">Delete</a>
             </div>
             <td>
-            <a href="Update.php?id=<?php echo $employe['id']; ?>">Update</a>
+            <a href="update_comment.php?id_comment=<?php echo $employe['id_comment']; ?>">Update</a>
             </td>
             </tr>
 

@@ -2,15 +2,14 @@
 <html>
 
 <head>
-    <title>Liste des utulistaeur</title>
+    <title>Liste des utilisateurs</title>
     <link rel="stylesheet" href="liste_employe.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-   
 </head>
-<body>
 
 <body>
+
     <div class="container">
         <div class="navigation">
             <ul>
@@ -82,70 +81,63 @@
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Singne Out</span>
                     </a>
                 </li>
             </ul>
         </div>
-   
     
         <h2 class="title">
-            Liste des utulisteur</h1>
-        <h2 class="inscription">
-            <p>TABLE OF USERS</p>
+            Liste des utilisateurs
         </h2>
-    <table border="1" align="center" width="70%">
-        <tr>
-            <th>Identity</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>ADRESSE</th>
-            <th>password</th>
-            <th>telephone</th>
-            <th>num_passport</th>
-            <th>genre</th>
-            <th>pays</th>
-            <th>Delete</th>
-            <th>Update</th>
-            
-        </tr>
-        <?php
-        require_once '../Controller/userC.php';
-        $employeC = new userC();
-        
-        $list = $employeC->listEmployes();
 
-        foreach ($list as $employe) {
-        ?>
+        <table border="1" align="center" width="70%">
             <tr>
-                <td><?= $employe['id']; ?></td>
-                <td><?= $employe['nom']; ?></td>
-                <td><?= $employe['prenom']; ?></td>
-                <td><?= $employe['email']; ?></td>
-                <td><?= $employe['adresse']; ?></td>
-                <td><?= $employe['password']; ?></td>
-                <td><?= $employe['telephone']; ?></td>
-                <td><?= $employe['num_passport']; ?></td>
-                <td><?= $employe['genre']; ?></td>
-                <td><?= $employe['pays']; ?></td>
-                <form >
-           <td>
-            <div>
-<a href="Admintraitment.php?id=<?php echo $employe['id']; ?>">Delete</a>
-            </div>
-            <td>
-            <a href="Update.php?id=<?php echo $employe['id']; ?>">Update</a>
-            </td>
+                <th>ID_avis</th>
+                <th>Avis</th>
+                <th>Last_name</th>
+                <th>First_name</th>
+                <th>ID</th>
             </tr>
+            <?php
+    require_once '../Controller/CommentaireC.php';
+        $employeC1 = new CommentaireC();
+        $id = $_POST['chercher'];        
+            $employeC = new CommentaireC();
+           
+            $list = $employeC->chercherAvisPariduser($id);
+            if($list!=null)
+            {
 
-                </td>
-           </form>
-        <?php
+            foreach ($list as $employe) {
+            ?>
+                <tr>
+                    <td><?= $employe['id_comment']; ?></td>
+                    <td><?= $employe['avis']; ?></td>
+                    <td><?= $employe['prenom']; ?></td>
+                    <td><?= $employe['nom']; ?></td>
+                    <td><?= $employe['id_user']; ?></td>
+                    <td>
+                    </td>
+                    <td>
+                    <a href="supprimer_avis.php?id_comment=<?php echo $employe['id_comment']; ?>">Delete</a>
+                    </td>
+                </tr>
+            <?php
+            }
+        }else
+        {
+            ?>
+            <script>
+                alert ("id nexiste pas");
+                window.location.href="liste_avis.php";
+            </script>
+            <?php
         }
-        ?>
-    </table>
-    
+            ?>
+
+        </table>
+    </div>
 </body>
 
 </html>

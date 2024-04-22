@@ -137,7 +137,7 @@ if(isset($_POST['id'])) {
         setTimeout(function() {
             var welcomeElement = document.querySelector('.welcome-text');
             welcomeElement.parentNode.removeChild(welcomeElement);
-            window.location.href = "#";
+            window.location.href = "index_user.html";
         }, 3000);
     </script>
 </body>

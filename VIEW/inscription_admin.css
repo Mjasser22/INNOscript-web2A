@@ -86,19 +86,10 @@
     letter-spacing: 1px;
   }
   button {
-    font-family: inherit;
-    font-size: 20px;
-    background: royalblue;
-    color: white;
-    padding: 0.7em 1em;
-    padding-left: 0.9em;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.2s;
-    cursor: pointer;
+    font-size: 14px;
+    color: #22b3c1;
+    font-weight: 500;
+    transition: all .3s;
   }
   
   button span {
@@ -170,4 +161,8 @@
 
 .closebtn:hover {
     color: black; /* Couleur du bouton au survol */
+}
+.error-message {
+  color: red;
+  font-size: 12px;
 }

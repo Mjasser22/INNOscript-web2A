@@ -1,11 +1,14 @@
 /* Styles pour la classe d'inscription */
 .inscription {
-    max-width: 700px; /* Largeur maximale du formulaire */
-    margin: 0 auto; /* Centrer horizontalement */
-    padding: 20px; /* Espacement intérieur */
-    border: 1px solid #ccc; /* Bordure */
-    border-radius: 5px; /* Coins arrondis */
-    background-color: #f9f9f9; /* Couleur de fond */
+  max-width: 700px; /* Largeur maximale du formulaire */
+  margin: 0 auto; /* Centrer horizontalement */
+  padding: 20px; /* Espacement intérieur */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 5px; /* Coins arrondis */
+  background-color: #f9f9f9; /* Couleur de fond */
+  background-size: cover; /* Taille de l'image de fond */
+  background-position: center; /* Position de l'image de fond */
+  background-repeat: no-repeat; /* Pas de répétition de l'image de fond */
   }
   
   /* Styles pour le titre du formulaire */
@@ -738,7 +741,6 @@ a:hover {
 button {
     font-family: inherit;
     font-size: 20px;
-    background: royalblue;
     color: white;
     padding: 0.7em 1em;
     padding-left: 0.9em;
@@ -749,6 +751,10 @@ button {
     overflow: hidden;
     transition: all 0.2s;
     cursor: pointer;
+    font-size: 14px;
+  color: #22b3c1;
+  font-weight: 500;
+  transition: all .3s;
   }
   
   button span {
@@ -797,11 +803,11 @@ body {
 .back-button {
     display: inline-block;
     padding: 10px 20px;
-    color: royalblue;
     text-decoration: none;
     border: 2px solid ;
     border-radius: 4px;
     transition: font-size 0.3s ease; /* Smooth transition for font size */
+    color: #22b3c1;
   }
   
   .back-button:hover {

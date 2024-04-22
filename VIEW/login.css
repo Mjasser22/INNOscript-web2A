@@ -171,9 +171,6 @@ p.welcome {
     font-size: 18px;
     margin-top: 20px;
 }
-
-
-  /* This is an example, feel free to delete this code */
 .tooltip-container {
     background: rgb(3, 169, 244);
     background: linear-gradient(
@@ -236,9 +233,6 @@ p.welcome {
     background: #03a9f4;
     fill: #fff;
   }
-  /* Fim do tooltip twitter */
-  
-  /* Inicio do tooltip facebook */
   .tooltip2 {
     position: absolute;
     top: 100%;
@@ -254,7 +248,6 @@ p.welcome {
     z-index: 1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
-  
   .tooltip-container:hover .tooltip2 {
     top: -120%;
     opacity: 1;
@@ -266,14 +259,10 @@ p.welcome {
     align-items: center;
     justify-content: center;
   }
-  
   .tooltip-container:hover .tooltip2:hover {
     background: #0462df;
     fill: #fff;
   }
-  /* Fim do tooltip facebook */
-  
-  /* Inicio do tooltip whatsApp */
   .tooltip3 {
     position: absolute;
     top: 100%;
@@ -305,9 +294,6 @@ p.welcome {
     background: #1db954;
     fill: #fff;
   }
-  /* Fim do tooltip whatsApp */
-  
-  /* Inicio do tooltip Discord */
   .tooltip4 {
     position: absolute;
     top: 100%;
@@ -339,9 +325,6 @@ p.welcome {
     background: #8c9eff;
     fill: #fff;
   }
-  /* Fim do tooltip Discord */
-  
-  /* Inicio do tooltip pinterest */
   .tooltip5 {
     position: absolute;
     top: 100%;
@@ -373,9 +356,6 @@ p.welcome {
     background: #bd081c;
     fill: #fff;
   }
-  /* Fim do tooltip pinterest */
-  
-  /* Inicio do tooltip dribbble */
   .tooltip6 {
     position: absolute;
     top: 100%;
@@ -407,9 +387,6 @@ p.welcome {
     background: #ea4c89;
     fill: #fff;
   }
-  /* Fim do tooltip dribbble */
-  
-  /* Inicio do tooltip github */
   .tooltip7 {
     position: absolute;
     top: 100%;
@@ -441,9 +418,6 @@ p.welcome {
     background: #000;
     fill: #fff;
   }
-  /* Fim do tooltip github */
-  
-  /* Inicio do tooltip reddit */
   .tooltip8 {
     position: absolute;
     top: 100%;
@@ -475,9 +449,6 @@ p.welcome {
     background: #ff4500;
     fill: #fff;
   }
-  /* Fim do tooltip reddit */
-  
-  /* Inicio do tooltip fixo */
   .tooltip9 {
     position: absolute;
     top: 0;
@@ -496,14 +467,10 @@ p.welcome {
     border-radius: 50%;
     z-index: -1;
   }
-  /* Fim do tooltip fixo */
-  /* Por meio desse ultimo tooltip todos os outros podem
-  ficar fixos quando houver no principal, para vê-lo dê um
-  background black acima*/
   button {
     font-family: inherit;
     font-size: 20px;
-    background: royalblue;
+    background: #22b3c1;
     color: white;
     padding: 0.7em 1em;
     padding-left: 0.9em;
@@ -552,4 +519,48 @@ p.welcome {
     to {
       transform: translateY(-0.1em);
     }
+  }
+  .btt {
+    background-color: #ffffff00;
+    color: #fff;
+    width: 8.5em;
+    height: 2.9em;
+    border: #22b3c1 0.2em solid;
+    border-radius: 11px;
+    text-align: right;
+    transition: all 0.6s ease;
+  }
+  
+  .btt:hover {
+    background-color: #22b3c1;
+    cursor: pointer;
+  }
+  
+  .btt svg {
+    width: 1.6em;
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: all 0.6s ease;
+  }
+  
+  .btt:hover svg {
+    transform: translateX(5px);
+  }
+  
+  .text {
+    margin: 0 1.5em
+  }
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid ;
+    border-radius: 4px;
+    transition: font-size 0.3s ease; 
+    color: #22b3c1;
+  }
+  
+  .back-button:hover {
+    font-size: 20px; 
   }

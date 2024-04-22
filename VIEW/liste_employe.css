@@ -1,3 +1,5 @@
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -307,8 +309,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
-/* ======================= Cards ====================== */
 .cardBox {
   position: relative;
   width: 100%;
@@ -502,8 +502,6 @@ body {
 .recentCustomers table tr:hover td h4 span {
   color: var(--white);
 }
-
-/* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation {
     left: -300px;

@@ -9,6 +9,13 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </head>
+<style>
+    .error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+</style>
 <body>
     
     <div class="container">
@@ -42,7 +49,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="liste_avis.php">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -78,14 +85,6 @@
                 </li>
 
                 <li>
-                    <a href="">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Gestion Admin</span>
-                    </a>
-                </li>
-                <li>
                     <a href="login.html">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
@@ -95,6 +94,7 @@
                 </li>
             </ul>
         </div>
+   
         <h1 class="ti">
             Registration</h1>
                 <div class="alert">
@@ -109,9 +109,10 @@
        
 <div class="inscription">
    
-    <form action="../View/inscription_admin.php" method="post" onsubmit="return validateID() && validateFirstName() && validateLastName() && valid_password() && validateNumberLength()&&validateNumberpass()">
+    <form action="../View/inscription_admin.php" method="post" onsubmit="return validateID() && validateFirstName() && validateLastName() && valid_password() && validateNumberLength()&&validateNumberpass()&&validateForm()">
         <label for="id">identité :</label>
         <input type="text" id="id" name="id" placeholder="Entrez votre identité" required>
+        <span id="idError" class="error-message"></span>
 
         <label for="nom">Prénom :</label>
         <input type="text" id="nom" name="nom" placeholder="Entrez votre prénom" required>
@@ -123,19 +124,19 @@
         <input type="text" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
 
         <label for="email">Adresse e-mail :</label>
-        <input type="email" id="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+        <input type="email" id="email" name="email" placeholder="Entrez votre adresse e-mail" >
 
         <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+        <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" >
     
         <label for="password1">Vérifier Mot de passe :</label>
-        <input type="password" id="password1" name="password1" placeholder="Entrez votre mot de passe" required>
+        <input type="password" id="password1" name="password1" placeholder="Entrez votre mot de passe" >
 
         <label for="telephone">Téléphone :</label>
-        <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required>
+        <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" >
 
         <label for="num_passport">Numéro de passeport :</label>
-        <input type="text" id="num_passport" name="num_passport" placeholder="Entrez votre numéro de passeport" required>
+        <input type="text" id="num_passport" name="num_passport" placeholder="Entrez votre numéro de passeport" >
 
         <label for="genre">Genre :</label>
         <select id="genre" name="genre" required>
@@ -184,17 +185,38 @@
 
 
 <script>
-    function validateID() {
-        var id = document.getElementById("id").value;
-        var idString = id.toString(); 
+function validateForm() {
+    var id = document.getElementById("id").value;
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var adresse = document.getElementById("adresse").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var password1 = document.getElementById("password1").value;
+    var telephone = document.getElementById("telephone").value;
+    var num_passport = document.getElementById("num_passport").value;
 
-        if (idString.length === 8 && !isNaN(id)) {
-            return true;
-        } else {
-            alert("Le ID doit être un nombre de 8 chiffres.");
-            return false;
-        }
+    if (id == "" || nom == "" || prenom == "" || adresse == "" || email == "" || password == "" || password1 == "" || telephone == "" || num_passport == "") {
+        alert("Veuillez remplir tous les champs.");
+        return false;
+    } else {
+        return true;
     }
+}
+function validateID() {
+    var id = document.getElementById("id").value;
+    var idString = id.toString(); 
+
+    if (idString.length === 8 && !isNaN(id)) {
+        // If validation succeeds, remove the error message
+        document.getElementById("idError").innerText = "";
+        return true;
+    } else {
+        // If validation fails, display the error message next to the input
+        document.getElementById("idError").innerText = "L'identifiant doit être un nombre de 8 chiffres.";
+        return false;
+    }
+}
 
     function validateFirstName() {
         var firstName = document.getElementById("nom").value;
