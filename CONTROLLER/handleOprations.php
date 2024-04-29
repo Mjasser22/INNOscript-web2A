@@ -1,24 +1,27 @@
 <?php
 include_once("../model/offre.php");
-$ID_employe = $_POST['ID_employe'];
-$new_employe = new employe();
+$ID_Emploi = $_POST['ID_Emploi'];
+$new_emploi = new emploi();
 if (isset($_POST['deleteButton'])) {
-    $new_employe->delete_employe($ID_employe);
-    header('Location: ../view/listOffre.php');  
+    $new_emploi->delete_emploi($ID_emploi);
+    header('Location: ../view/index.html');  
 }
 if (isset($_POST['updateButton'])) {
-    $new_employe = new employe();
-    $final_list = $new_employe->read_employe_by_id($ID_employe);
-    foreach ($final_list as $employe) {
-        $ID_employe = $employe['ID_employe'];
-        $nom = $employe['nom'];
-        $prenom = $employe['prenom'];
-        $age = $employe['age'];
-        $numTel = $employe['numTel'];
-        $adresse = $employe['adresse'];
-        $date_debut = $employe['date_debut'];
-        $date_fin = $employe['date_fin'];
-        $email = $employe['email'];
+    $new_emploi = new emploi();
+    $final_list = $new_emploi->read_emploi_by_id($ID_Emploi);
+    foreach ($final_list as $emploi) {
+        $ID_Emploi = $emploi['ID_Emploi'];
+        $specialite = $emploi['specialite'];
+        $pieceidentite = $emploi['pieceidentite'];
+        $numero = $emploi['numero'];
+        $Email = $emploi['Email'];
+        $disponibilite = $emploi['disponibilite'];
+        $password = $emploi['password'];
+        $genre = $emploi['genre'];
+
+
+
+
     }
 ?>
 <!DOCTYPE html>
@@ -84,31 +87,30 @@ if (isset($_POST['updateButton'])) {
     <div class="container">
         <form action="../controller/handelUpdate.php" method="POST">
             <h2>Update Offre</h2>
-            <input type ="hidden" name = "ID_employe" value ="<?php echo $ID_employe ?>">
+            <input type ="hidden" name = "ID_Emploi" value ="<?php echo $ID_Emploi ?>">
 
-            <label for="nom">nom employe:</label>
-            <input type="text" id="nom" name="nom" value ="<?php echo $nom ?>" required>
+            <label for="specialite">specialite:</label>
+            <input type="text" id="specialite" name="specialite" value ="<?php echo $specialite ?>" required>
                 
-            <label for="prenom">prenom employe:</label>
-            <input type="text" id=prenom" name="prenom" value ="<?php echo $prenom ?>" required>
+            <label for="pieceidentite">pieceidentite:</label>
+            <input type="text" id=pieceidentite" name="pieceidentite" value ="<?php echo $pieceidentite ?>" required>
                 
-            <label for="age">Age:</label>
-            <input type="text" id="age" name="age" value ="<?php echo $age ?>" required>
+            <label for="age">numero:</label>
+            <input type="text" id="numero" name="numero" value ="<?php echo $numero ?>" required>
             
-            <label for="Email">numTel:</label>
-            <input type="text" id="numTel" name="numTel" value ="<?php echo $numTel ?>" required>
-                
-            <label for="numTel">adresse:</label>
-            <input type="text" id="adresse" name="adresse" value ="<?php echo $adresse ?>" required>
-                
-            <label for="Email">date_debut:</label>
-            <input type="date" id="date_debut" name="date_debut" value ="<?php echo $date_debut ?>" required>
-                
-            <label for="date_fin">date_fin:</label>
-            <input type="date" id="date_fin" name="date_fin" value ="<?php echo $date_fin ?>" required>
-                
             <label for="Email">Email:</label>
-            <input type="text" id="Email" name="email" value ="<?php echo $email ?>" required>
+            <input type="text" id="Email" name="Email" value ="<?php echo $Email ?>" required>
+                
+            <label for="disponibilite">disponibilite:</label>
+            <input type="text" id="disponibilite" name="disponibilite" value ="<?php echo $disponibilite ?>" required>
+                
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password" value ="<?php echo $password ?>" required>
+                
+            <label for="genre">genre:</label>
+            <input type="genre" id="genre" name="genre" value ="<?php echo $genre ?>" required>
+                
+           
 
             <input type="submit" value="Update">
         </form>
