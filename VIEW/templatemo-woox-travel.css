@@ -102,9 +102,9 @@ ul {
 }
 
 p {
-  font-size: 15px;
+  font-size: 30px;
   line-height: 30px;
-  color: #afafaf;
+  color: #3e5fbb;
 }
 
 img {
@@ -211,7 +211,7 @@ section {
   font-size: 30px;
   font-weight: 700;
   text-transform: capitalize;
-  color: #2a2a2a;
+  color: #00FFFF;
 }
 
 /* 
