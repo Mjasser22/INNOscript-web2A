@@ -1,5 +1,5 @@
 <?php
-class Categorie
+class categorie
 {
     private ?int $id = null;
     private ?string $libelle= null;
@@ -19,8 +19,7 @@ class Categorie
     public function getlibelle()
     {
         return $this->libelle;
-    } 
-
+    }
 
     public function setlibelle($libelle)
     {

@@ -4,10 +4,8 @@ include '../../Controller/categorieC.php';
 
 $error = "";
 
-// create employe
 $categorie = null;
 
-// create an instance of the controller
 $categorieC = new categorieC();
 if (
     isset($_POST["libelle"])

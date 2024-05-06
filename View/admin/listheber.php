@@ -1,7 +1,45 @@
 <?php
 include '../../controller/HebergementC.php';
-$heberC = new HebergementC();
-$list = $heberC->listHebergements();
+include '../../Controller/CategorieC.php';
+
+$error = '';
+$hebergementC = new HebergementC();
+$categorieC = new CategorieC();
+
+$currentHebergements = $hebergementC->listHebergements();
+$categories = $categorieC->listcat();
+
+if (
+    $_SERVER['REQUEST_METHOD'] == 'POST' &&
+    isset($_POST['delete_hebergement'])
+) {
+    $hebergement_id = $_POST['hebergement_id'];
+    $hebergementC->deleteHebergement($hebergement_id);
+    // Redirect to prevent form resubmission
+    header('Location: listheber.php');
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_nom'])) {
+    $hebergement_id = $_POST['hebergement_id'];
+    $nom = $_POST['update_nom'];
+    $prix = $_POST['update_prix'];
+    $ville = $_POST['update_ville'];
+    $adresse = $_POST['update_adresse'];
+    $id_categorie = $_POST['update_id_categorie'];
+    $updatedHebergement = new Hebergement(
+        $hebergement_id,
+        $nom,
+        $prix,
+        $ville,
+        $adresse,
+        $id_categorie
+    );
+    $hebergementC->updateHebergement($updatedHebergement, $hebergement_id);
+    header('Location: listheber.php');
+    exit();
+}
+
 ?>
 <html>
 
@@ -21,8 +59,10 @@ $list = $heberC->listHebergements();
 
     <!-- Custom styles for this template-->
     <link href="./travel.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet"></head>
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
+</head>
 <body>
 <div id="wrapper">
 
@@ -140,43 +180,130 @@ $list = $heberC->listHebergements();
             </div>
 
         </ul>
-        <div class="container-fluid">
-        <center>
-    <h1>List of heber</h1>
-</center>
-<table border="1" align="center" width="70%">
-    <tr>
-        <th>Id heber</th>
-        <th>Prix</th>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <th>Ville</th>
-        <th>Categorie</th>
-    </tr>
+
+        <div class="container mt-5">
+      <div class="card rounded-3 shadow-sm">
+            <div class="card-body">
+        <h3>Liste des hebergements</h3>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Ville</th>
+                    <th>Adresse</th>
+                    <th>Categorie</th>
+            <th>Supprimer</th>
+            
+            <th>Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($currentHebergements as $hebergement): ?>
+                    <tr>
+                        <td><?php echo $hebergement['nom']; ?></td>
+                        <td><?php echo $hebergement['prix']; ?></td>
+                        <td><?php echo $hebergement['ville']; ?></td>
+                        <td><?php echo $hebergement['adresse']; ?></td>
+                        <td><?php echo $hebergementC->getCategoryLibelle(
+                            $hebergement['id_categorie']
+                        ); ?></td>
+                        <td>
+                        <form action="" method="POST">
+                        <input type="hidden" name="hebergement_id" value="<?= $hebergement[
+                            'id'
+                        ] ?>">
+                        <button type="submit" name="delete_hebergement" class="btn btn-danger">Supprimer</button>
+                    </form>
+                  </td>
+
+                  <td>
+        <button class="btn btn-primary modifier-btn">Modifier</button>
+        
+        <form class="update-form" action="" method="POST" style="display: none;">
+            <input type="hidden" name="hebergement_id" value="<?= $hebergement[
+                'id'
+            ] ?>">
+            <div class="form-group">
+                <label for="update_nom">Nom:</label>
+                <input type="text" class="form-control" id="update_nom" name="update_nom" value="<?= $hebergement[
+                    'nom'
+                ] ?>">
+            </div>
+            <div class="form-group">
+                <label for="update_prix">Prix:</label>
+                <input type="text" class="form-control" id="update_prix" name="update_prix" value="<?= $hebergement[
+                    'prix'
+                ] ?>">
+            </div>
+            <div class="form-group">
+                <label for="update_ville">Ville:</label>
+                <input type="text" class="form-control" id="update_ville" name="update_ville" value="<?= $hebergement[
+                    'ville'
+                ] ?>">
+            </div>
+            <div class="form-group">
+                <label for="update_adresse">Adresse:</label>
+                <input type="text" class="form-control" id="update_adresse" name="update_adresse" value="<?= $hebergement[
+                    'adresse'
+                ] ?>">
+            </div>
+            <div class="form-group">
+                <label for="update_id_categorie">Catégorie:</label>
+                <select class="form-control" id="update_id_categorie" name="update_id_categorie">
+                    
+            <?php
+
+$categories = $categorieC->listcat();
+foreach ($categories as $category) {
+    echo '<option value="' .
+        $category['id'] .
+        '">' .
+        $category['libelle'] .
+        '</option>';
+}
+?>
+</select>
 
 
-    <?php
-    foreach ($list as $heber) {
-    ?>
 
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </form>
+    </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
 
+        </div></div></div>
 
+        <ul class="flexbox">
+  <li>Monday</li>
+  <li>Tuesday</li>
+  <li>Wednesday</li>
+  <li>Thursday</li>
+  <li>Friday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+  <li>Saturday</li>
+  <li>Sunday</li>
+</ul>
 
-        <tr>
-            <td><?= $heber['id']; ?></td>
-            <td><?= $heber['prix']; ?></td>
-            <td><?= $heber['nom']; ?></td>
-            <td><?= $heber['adresse']; ?></td>
-            <td><?= $heber['ville']; ?></td>
+      
 
-            <td><?php echo $heberC->getCategoryLibelle($heber['id_categorie']); ?></td>
-        </tr>
-    <?php
-    }
-    ?>
-</table>
-
+      
     </div>
+  </div>
 
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -184,6 +311,7 @@ $list = $heberC->listHebergements();
 
     </div>
 
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -200,6 +328,18 @@ $list = $heberC->listHebergements();
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+
+    
+    <script>
+     $(document).ready(function() {
+    $('.modifier-btn').click(function() {
+        console.log("Modifier button clicked");
+        $(this).siblings('.update-form').toggle();
+    });
+});
+</script>
+
     
 </body>
 

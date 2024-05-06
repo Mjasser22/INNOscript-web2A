@@ -4,10 +4,8 @@ include '../../controller/categorieC.php';
 
 $error = "";
 
-// create employe
 $categorie = null;
 
-// create an instance of the controller
 $categorieC = new categorieC();
 if (
     isset($_POST["id"]) &&
@@ -18,7 +16,9 @@ if (
         !empty($_POST["libelle"]) 
     ) {
         $categorie = new categorie(
-            $_POST['id'],
+            //$_POST['id'],
+            
+            NULL,
             $_POST['libelle']
         );
         $categorieC->updatecat($categorie, $_POST["id"]);
@@ -182,7 +182,7 @@ if (
 
         <form action="" method="POST">
             <table border="1" align="center">
-                <tr>
+                <tr style="display : none">
                     <td>
                         <label for="id">Id categorie:
                         </label>

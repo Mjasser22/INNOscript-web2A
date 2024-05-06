@@ -1,9 +1,11 @@
 <?php
-include __DIR__ . '/../config.php';
 
-include __DIR__ . '/../Model/Categorie.php';
+include_once __DIR__ . '/../config.php';
 
-class CategorieC
+include_once '../../model/categorie.php';
+include_once '../../model/hebergement.php';
+
+class categorieC
 {
     public function listcat()
     {
@@ -34,13 +36,14 @@ class CategorieC
     function addcat($categorie)
     {
         $sql = "INSERT INTO categorie  
-        VALUES (NULL, :fn)";
+        VALUES (NULL, :l)";
         $db = config::getConnexion();
         try {
           
             $query = $db->prepare($sql);
             $query->execute([
-                'fn' => $categorie->getlibelle()
+                'l' => $categorie->getlibelle(),
+        
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
@@ -65,6 +68,23 @@ class CategorieC
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {
             $e->getMessage();
+        }
+    }
+
+
+    function getCategoriesWithHebergementCounts()
+    {
+        $sql = "SELECT c.id, c.libelle, COUNT(h.id) AS hebergement_count FROM categorie c LEFT JOIN hebergement h ON c.id = h.id_categorie GROUP BY c.id, c.libelle";
+
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            return $query->fetchAll();
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            return [];
         }
     }
 

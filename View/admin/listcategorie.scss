@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  .wrapper{
+    padding:2rem;
+    background-color: #ccc;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: sans-serif;
+  }
+  
+  .scroll-container{
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.5);
+  }
+  
+  .list-container{  
+    display:inline-flex;             /*  Keep the element in one line */
+    justify-content: space-between;  /*  Not much effect */
+    align-items: stretch;            /*  Make them all the same height */
+    flex-wrap: no-wrap;              /*  This one makes the trick */
+  }
+  
+  .list-container > *{       /*  Target only the first top level children */
+    color: #fff;
+    background-color: blue;
+    padding: 3rem;
+    margin-right: 1rem;      /*  The gap must be in the element definition */
+  }
+  
+  .list-container > *:last-child{
+    margin-right: 0;
+  }
+  
+  /* Other styles */
+  
+  body{
+    padding: 2rem 0;
+  }
+  
+  h1{
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+    padding: 0 0 1rem;
+  }
