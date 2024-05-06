@@ -1,0 +1,555 @@
+body {
+    background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+.box-form {
+    margin: 0 auto;
+    width: 60%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex: 1 1 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 6px #090b6f85;
+}
+
+@media (max-width: 980px) {
+    .box-form {
+        flex-flow: wrap;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+    }
+}
+
+.box-form div {
+    height: auto;
+}
+
+.box-form .left {
+    color: #FFFFFF;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://i.pinimg.com/736x/5d/73/ea/5d73eaabb25e3805de1f8cdea7df4a42--tumblr-backgrounds-iphone-phone-wallpapers-iphone-wallaper-tumblr.jpg");
+    overflow: hidden;
+}
+
+.box-form .left .overlay {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    background: #5961f9ad;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.box-form .left .overlay h3 {
+    font-size: 3vmax;
+    line-height: 1;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.box-form .left .overlay span p {
+    margin-top: 50px;
+    font-weight: 900;
+}
+
+.box-form .left .overlay span a {
+    background: #3b5998;
+    color: #FFFFFF;
+    margin-top: 10px;
+    padding: 14px 50px;
+    border-radius: 100px;
+    display: inline-block;
+    box-shadow: 0 3px 6px 1px #042d4657;
+}
+
+.box-form .left .overlay span a:last-child {
+    background: #1dcaff;
+    margin-left: 30px;
+}
+
+.box-form .right {
+    padding: 40px;
+    overflow: hidden;
+}
+
+@media (max-width: 980px) {
+    .box-form .right {
+        width: 100%;
+    }
+}
+
+.box-form .right h5 {
+    font-size: 6vmax;
+    line-height: 0;
+}
+
+.box-form .right p {
+    font-size: 15px;
+    color: #B0B3B9;
+}
+
+.box-form .right .inputs {
+    overflow: hidden;
+}
+
+.box-form .right input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #B0B3B9;
+}
+
+.box-form .right .remember-me--forget-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-form .right .remember-me--forget-password input {
+    margin: 0;
+    margin-right: 7px;
+    width: auto;
+}
+
+label {
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+
+label::before {
+    content: ' \f00c';
+    position: absolute;
+    font-family: FontAwesome;
+    background: transparent;
+    border: 3px solid #22b3c1;
+    border-radius: 4px;
+    color: transparent;
+    left: -30px;
+    transition: all 0.2s linear;
+}
+
+label:hover::before {
+    font-family: FontAwesome;
+    content: ' \f00c';
+    color: #fff;
+    cursor: pointer;
+    background: black #22b3c1;
+}
+
+label:hover::before .text-checkbox {
+    background: #22b3c1;
+}
+
+label span.text-checkbox {
+    display: inline-block;
+    height: auto;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+label input[type="checkbox"] {
+    display: none;
+}
+
+p.welcome {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+
+  /* This is an example, feel free to delete this code */
+.tooltip-container {
+    background: rgb(3, 169, 244);
+    background: linear-gradient(
+      138deg,
+      rgba(3, 169, 244, 1) 15%,
+      rgba(63, 180, 233, 1) 65%
+    );
+    position: relative;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 0.7em 0.7em;
+    border-radius: 50px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  .tooltip-container:hover {
+    background: #fff;
+    transition: all 0.6s;
+  }
+  .tooltip-container .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: #fff;
+    transition: all 0.2s;
+  }
+  .tooltip-container:hover .text {
+    fill: rgb(3, 169, 244);
+    transition: all 0.6s;
+  }
+  
+  /* Inicio do tooltip twitter */
+  .tooltip1 {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #03a9f4;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip1 {
+    top: 150%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    border-radius: 50px;
+    transform: translate(-50%, -5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip1:hover {
+    background: #03a9f4;
+    fill: #fff;
+  }
+  /* Fim do tooltip twitter */
+  
+  /* Inicio do tooltip facebook */
+  .tooltip2 {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #0462df;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip2 {
+    top: -120%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(-50%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tooltip-container:hover .tooltip2:hover {
+    background: #0462df;
+    fill: #fff;
+  }
+  /* Fim do tooltip facebook */
+  
+  /* Inicio do tooltip whatsApp */
+  .tooltip3 {
+    position: absolute;
+    top: 100%;
+    left: 60%;
+    transform: translateX(80%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #1db954;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip3 {
+    top: 10%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(85%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip3:hover {
+    background: #1db954;
+    fill: #fff;
+  }
+  /* Fim do tooltip whatsApp */
+  
+  /* Inicio do tooltip Discord */
+  .tooltip4 {
+    position: absolute;
+    top: 100%;
+    left: -190%;
+    transform: translateX(70%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #8c9eff;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip4 {
+    top: 10%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(70%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip4:hover {
+    background: #8c9eff;
+    fill: #fff;
+  }
+  /* Fim do tooltip Discord */
+  
+  /* Inicio do tooltip pinterest */
+  .tooltip5 {
+    position: absolute;
+    top: 100%;
+    left: -145%;
+    transform: translateX(70%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #bd081c;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip5 {
+    top: -78%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(70%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip5:hover {
+    background: #bd081c;
+    fill: #fff;
+  }
+  /* Fim do tooltip pinterest */
+  
+  /* Inicio do tooltip dribbble */
+  .tooltip6 {
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    transform: translateX(70%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #ea4c89;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip6 {
+    top: -79%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(70%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip6:hover {
+    background: #ea4c89;
+    fill: #fff;
+  }
+  /* Fim do tooltip dribbble */
+  
+  /* Inicio do tooltip github */
+  .tooltip7 {
+    position: absolute;
+    top: 100%;
+    left: 39%;
+    transform: translateX(70%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #000;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip7 {
+    top: 104%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(70%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip7:hover {
+    background: #000;
+    fill: #fff;
+  }
+  /* Fim do tooltip github */
+  
+  /* Inicio do tooltip reddit */
+  .tooltip8 {
+    position: absolute;
+    top: 100%;
+    left: -150%;
+    transform: translateX(70%);
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    fill: #ff4500;
+    padding: 10px;
+    border-radius: 50px;
+    transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tooltip-container:hover .tooltip8 {
+    top: 101%;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    transform: translate(70%, -5px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tooltip-container:hover .tooltip8:hover {
+    background: #ff4500;
+    fill: #fff;
+  }
+  /* Fim do tooltip reddit */
+  
+  /* Inicio do tooltip fixo */
+  .tooltip9 {
+    position: absolute;
+    top: 0;
+    left: -115%;
+    opacity: 0;
+    visibility: hidden;
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+  }
+  
+  .tooltip-container:hover .tooltip9 {
+    top: -110%;
+    opacity: 1;
+    visibility: visible;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  /* Fim do tooltip fixo */
+  /* Por meio desse ultimo tooltip todos os outros podem
+  ficar fixos quando houver no principal, para vê-lo dê um
+  background black acima*/
+  button {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  button:hover span {
+    transform: translateX(5em);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
