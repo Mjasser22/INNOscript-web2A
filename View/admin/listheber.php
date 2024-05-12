@@ -2,9 +2,14 @@
 include '../../controller/HebergementC.php';
 include '../../Controller/CategorieC.php';
 
+
+
+
+
 $error = '';
 $hebergementC = new HebergementC();
 $categorieC = new CategorieC();
+$categoriesWithCount = $categorieC->getCategoriesWithHebergementCounts();
 
 $currentHebergements = $hebergementC->listHebergements();
 $categories = $categorieC->listcat();
@@ -43,147 +48,103 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_nom'])) {
 ?>
 <html>
 
-<head><meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="./travel.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+    <link rel="stylesheet" href="hebergement.css">
+    
+    <!-- Include other necessary stylesheets -->
 </head>
+
 <body>
-<div id="wrapper">
+    <!-- Your HTML content -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                        <ion-icon name="clipboard-outline"></ion-icon>
+                        </span>
+                        <span class="title">Welcome to your Dashbored </span>
+                    </a>
+                </li>
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <li>
+                    <a href="liste_employe.php">
+                        <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">search:filter data</span>
+                    </a>
+                    
+                    <input type="text" placeholder="Search with speciality" id="speciality" onkeyup="filterTable()" >
+                </li>
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <li>
+                    <a href="inscription_admin.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add User</span>
+                    </a>
+                </li>
+
+                <li>
+                <a href="../view/export_pdf.php">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">export_pdf</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="container">
+            <a href="hebergement.php">
+                <button class="ajouter">Ajouter</button>
             </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-
-            <!-- Nav Item - Tables -->
             
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
-
-        </ul>
-
-        <div class="container mt-5">
-      <div class="card rounded-3 shadow-sm">
-            <div class="card-body">
+            
+        </div>
         <h3>Liste des hebergements</h3>
         <table class="table table-light">
             <thead>
@@ -279,28 +240,31 @@ foreach ($categories as $category) {
 
         </div></div></div>
 
-        <ul class="flexbox">
-  <li>Monday</li>
-  <li>Tuesday</li>
-  <li>Wednesday</li>
-  <li>Thursday</li>
-  <li>Friday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-</ul>
-
-      
-
+        
+      <div class="card rounded-3 shadow-sm">
+            <div class="card-body">
+                <h3>Nombre d'hebergement par categorie</h3>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Categorie</th>
+                            <th class="text-center">Nombre d'hebergements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($categoriesWithCount as $category) {
+                            echo '<tr>';
+                            echo '<td>' . $category['libelle'] . '</td>';
+                            echo '<td  class="text-center">' . $category['hebergement_count'] . '</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                
+            </div>
+            </div>
       
     </div>
   </div>

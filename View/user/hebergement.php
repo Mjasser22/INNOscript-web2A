@@ -254,7 +254,8 @@ https://templatemo.com/tm-580-woox-travel
                 'id_categorie'
             ]; ?>">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                      <div>
                         <h5 class="card-title"><?php echo $hebergement[
                             'nom'
                         ]; ?></h5>
@@ -283,6 +284,10 @@ https://templatemo.com/tm-580-woox-travel
                     <?php endif; ?>
                         <button class="btn btn-primary show-review-form" data-hebergement-id="<?php echo $hebergement['id']; ?>">Leave Review</button>
                         <button class="btn btn-success">Réserver</button>
+                        </div>
+                        <div class="">
+                          <img src="./assets/images/logo.png" alt="Image Description" class="ml-auto" style="max-width: 188px;">
+                        </div>
                     </div>
                 </div>
             </div>
