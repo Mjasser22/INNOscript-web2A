@@ -10,9 +10,10 @@ class User {
     private $num_passport;
     private $genre;
     private $pays;
+    private $photo;
+    private $verif;
 
-
-    public function __construct($id, $nom, $prenom, $adresse, $email, $password, $telephone, $num_passport, $genre, $pays) {
+    public function __construct($id, $nom, $prenom, $adresse, $email, $password, $telephone, $num_passport, $genre, $pays, $verif) {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -23,9 +24,16 @@ class User {
         $this->num_passport = $num_passport;
         $this->genre = $genre;
         $this->pays = $pays;
+        $this->verif = $verif;
     }
 
     // Méthodes pour accéder aux propriétés privées
+    public function getPhoto() {
+        return $this->photo;
+    }
+    public function setPhoto($photo) {
+        $this->photo = $photo;
+    }
 
     public function getId() {
         return $this->id;
@@ -101,6 +109,14 @@ class User {
 
     public function setPays($pays) {
         $this->pays = $pays;
+    }
+
+    public function getVerif() {
+        return $this->verif;
+    }
+
+    public function setVerif($verif) {
+        $this->verif = $verif;
     }
 }
 ?>
