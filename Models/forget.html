@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de connexion</title>
+    <style>
+        /* Style de base pour le formulaire */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            left: -25px;
+            top: -30px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #22b3c1;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #22b3c1;
+        }
+        .ti {
+    font-size: 120px;
+    text-transform: uppercase;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    outline: none;
+    text-align: center;
+  color:black;
+
+  }
+  
+  .ti:hover {
+    font-variation-settings: "wght" 582; 
+    letter-spacing: 1px;
+  }
+  .centered-alert {
+    display: flex; /* Utiliser un affichage flex */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Hauteur de l'écran */
+}
+
+.alert {
+    background-color:gold; /* Couleur d'arrière-plan de l'alerte */
+    color: black; /* Couleur du texte */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    width: 50%; /* Largeur de l'alerte */
+    max-width: 400px; /* Largeur maximale de l'alerte */
+    text-align: left; /* Centrage du texte */
+    position: relative; /* Position relative pour le bouton de fermeture */
+    right: -700px;
+    top: -10px;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+  text-transform: capitalize;
+
+}
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid ;
+    border-radius: 4px;
+    transition: font-size 0.3s ease; 
+    color: #22b3c1;
+  }
+  
+  .back-button:hover {
+    font-size: 20px; 
+  }
+
+    </style>
+</head>
+<body>
+    <a href="login.html" class="back-button">
+        <span class="icon">&larr;</span> Back
+      </a>
+    <h1 class="ti">
+        Registration</h1>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Warning! <br>
+                Welcome to the Forget password page.Before you start,<br>
+                please take the time to carefully read each field and accurately enter your details. Thank you for your attention.<br> 
+              </div> 
+        </center>
+     </p>
+    <form action="send_mail.php" method="post" onsubmit="return validateForm()"> <!-- Ajout de l'événement onsubmit pour appeler la fonction validateForm() lors de la soumission du formulaire -->
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse email"> <!-- Ajout de l'attribut placeholder pour indiquer à l'utilisateur ce qu'il doit saisir -->
+        <button type="submit">Envoyer</button> <!-- Utilisation du type "submit" pour soumettre le formulaire -->
+    </form>
+
+    <script>
+        function validateForm() {
+            var adresse = document.getElementById("adresse").value; // Récupération de la valeur de l'adresse email
+            if (adresse.trim() === "") { // Vérification si l'adresse email est vide après suppression des espaces avant et après
+                alert("Veuillez remplir tous les champs."); // Affichage d'une alerte si l'adresse email est vide
+                return false; // Empêche la soumission du formulaire
+            }
+            return true; // Autorise la soumission du formulaire si tous les champs sont remplis
+        }
+    </script>
+</body>
+</html>

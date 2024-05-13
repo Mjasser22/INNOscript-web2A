@@ -1,0 +1,190 @@
+/* Styles pour la classe d'inscription */
+.inscription {
+    max-width: 700px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Centrer horizontalement */
+    padding: 20px; /* Espacement intérieur */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #f9f9f9; /* Couleur de fond */
+  }
+  
+  /* Styles pour le titre du formulaire */
+  .inscription h2 {
+    text-align: center; /* Centrer le texte */
+  }
+  
+  /* Styles pour les labels */
+  .inscription label {
+    display: block; /* Affichage en bloc */
+    margin-bottom: 10px; /* Espacement entre les éléments */
+  }
+  
+  /* Styles pour les champs de texte */
+  .inscription input[type="text"],
+  .inscription input[type="email"],
+  .inscription input[type="password"],
+  .inscription input[type="tel"],
+  .inscription select {
+    width: 100%; /* Largeur à 100% */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 15px; /* Espacement en bas */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 3px; /* Coins arrondis */
+    box-sizing: border-box; /* Inclure la bordure dans la largeur */
+  }
+  
+  /* Styles pour le bouton de soumission */
+  .inscription input[type="submit"] {
+    width: 100%; /* Largeur à 100% */
+    padding: 10px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 3px; /* Coins arrondis */
+    background-color: #4caf50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    cursor: pointer; /* Curseur pointer */
+  }
+  
+  /* Styles pour l'image */
+  img {
+    display: block; /* Affichage en bloc */
+    margin-top: 20px; /* Espacement en haut */
+    margin-left: auto; /* Centrer horizontalement */
+    margin-right: auto; /* Centrer horizontalement */
+    width: 50px; /* Largeur de l'image */
+    height: auto; /* Hauteur automatique */
+  }
+  .phrase_bienvenue {
+    font-size: 1.2em;
+    line-height: 150%;
+    text-align: center;
+    color: #bbb lac; ;
+    letter-spacing: .5px;
+  
+
+  @media screen and (max-width: 600px) {
+    .phrase_bienvenue {
+      font-size: 14px; 
+    }
+}
+  }
+  .ti {
+    font-size: 120px;
+    text-transform: uppercase;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    outline: none;
+    text-align: center;
+  color:black;
+
+  }
+  
+  .ti:hover {
+    font-variation-settings: "wght" 582; 
+    letter-spacing: 1px;
+  }
+  button {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  button:hover span {
+    transform: translateX(5em);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+  .centered-alert {
+    display: flex; /* Utiliser un affichage flex */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Hauteur de l'écran */
+}
+
+.alert {
+    background-color:gold; /* Couleur d'arrière-plan de l'alerte */
+    color: black; /* Couleur du texte */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    width: 50%; /* Largeur de l'alerte */
+    max-width: 400px; /* Largeur maximale de l'alerte */
+    text-align: left; /* Centrage du texte */
+    position: relative; /* Position relative pour le bouton de fermeture */
+    right: -700px;
+    top: -10px;
+}
+
+.closebtn {
+    position: absolute; /* Position absolue pour le bouton de fermeture */
+    top: 0; /* Position en haut */
+    right: 20px; /* Position à droite */
+    color: white; /* Couleur du bouton */
+    font-size: 30px; /* Taille de police */
+    cursor: pointer; /* Curseur pointer */
+}
+
+.closebtn:hover {
+    color: black; /* Couleur du bouton au survol */
+}
+.inscription input[type="date"] {
+  width: 100%; /* Largeur à 100% */
+  padding: 10px; /* Espacement intérieur */
+  margin-bottom: 15px; /* Espacement en bas */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 3px; /* Coins arrondis */
+  box-sizing: border-box; /* Inclure la bordure dans la largeur */
+}
+
+/* Styles spécifiques pour les étiquettes des champs de date */
+.inscription label[for="date_debut"],
+.inscription label[for="date_fin"] {
+  display: block; /* Affichage en bloc */
+  margin-bottom: 5px; /* Espacement entre les étiquettes */
+  color: #333; /* Couleur du texte */
+  font-weight: bold; /* Police en gras */
+}

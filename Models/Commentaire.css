@@ -1,0 +1,44 @@
+
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffc107; /* Couleur jaune pour les étoiles survolées ou sélectionnées */
+}
+
+textarea {
+    width: 100%; 
+    height: 100px; 
+    padding: 10px; /* Ajoute un padding */
+    box-sizing: border-box; /* Inclut la taille du padding et de la bordure dans la largeur et la hauteur */
+    border: 1px solid #ccc; /* Ajoute une bordure */
+    border-radius: 5px; /* Ajoute un arrondi aux coins */
+    resize: vertical; /* Autorise uniquement le redimensionnement vertical */
+    font-family: Arial, sans-serif; /* Définit la police de caractères */
+    font-size: 14px; /* Définit la taille de la police */
+    line-height: 1.5; /* Définit la hauteur de ligne */
+}
+
+textarea:focus {
+    outline: none; /* Supprime la bordure de focus */
+    border-color: #007bff; /* Change la couleur de la bordure lorsque la zone de texte est en focus */
+}
+
