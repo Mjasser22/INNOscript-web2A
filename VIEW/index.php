@@ -8,7 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Las Aguilas</title>
+    <title>WoOx Travel Bootstrap 5 Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,25 +26,6 @@ TemplateMo 580 Woox Travel
 https://templatemo.com/tm-580-woox-travel
 
 -->
-<style>
-  /* Styles pour la liste */
-  .nav {
-      list-style-type: none; /* Supprime les puces */
-      padding: 0; /* Supprime les marges par défaut */
-      margin: 0; /* Supprime les marges par défaut */
-  }
-
-  /* Styles pour chaque élément de la liste */
-  .nav li {
-      margin-bottom: 10px; /* Espace entre chaque élément */
-  }
-
-  /* Styles pour les liens */
-  .nav li a {
-      text-decoration: none; /* Supprime le soulignement des liens */
-      color: #333; /* Couleur du texte */
-  }
-</style>
 
   </head>
 
@@ -71,23 +52,16 @@ https://templatemo.com/tm-580-woox-travel
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
-                      
-                      <div style="text-align: left;">
-                        <img src="" alt="">
-                        
-                    </div>
+                        <img src="assets/images/logo.png" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="" class="active">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                       
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        
+                        <li><a href="index.php" class="active">Home</a></li>
+                        <li><a href="reservation.php">voyage</a></li>
+                        <li><a href="deals.html">categories</a></li>
+                        <li><a href="check_reservation.php">Reservation</a></li>
+                        <li><a href="reservation.php">Book Yours</a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -398,11 +372,11 @@ https://templatemo.com/tm-580-woox-travel
       <div class="row">
         <div class="col-lg-8">
           <h2>Are You Looking To Travel ?</h2>
-          <h4>Share your experience and leave a review about your recent journey with us!</h4>
+          <h4>Make A Reservation By Clicking The Button</h4>
         </div>
         <div class="col-lg-4">
           <div class="border-button">
-            <a href="Commentaire.html">feedback</a>
+            <a href="reservation.html">Book Yours Now</a>
           </div>
         </div>
       </div>
@@ -447,7 +421,6 @@ https://templatemo.com/tm-580-woox-travel
       bannerTimer = setInterval(bannerSwitcher, 5000)
     });
   </script>
-  
 
   </body>
 

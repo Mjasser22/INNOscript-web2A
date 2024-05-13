@@ -85,7 +85,49 @@
     font-variation-settings: "wght" 582; 
     letter-spacing: 1px;
   }
+  button {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
   
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  button:hover span {
+    transform: translateX(5em);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
   
   @keyframes fly-1 {
     from {
@@ -129,50 +171,20 @@
 .closebtn:hover {
     color: black; /* Couleur du bouton au survol */
 }
-.error-message {
-  color: red;
-  font-size: 12px;
-}
-button {
-  font-family: inherit;
-  font-size: 20px;
-  background: #22b3c1;
-  color: white;
-  padding: 0.7em 1em;
-  padding-left: 0.9em;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.2s;
-  cursor: pointer;
+.inscription input[type="date"] {
+  width: 100%; /* Largeur à 100% */
+  padding: 10px; /* Espacement intérieur */
+  margin-bottom: 15px; /* Espacement en bas */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 3px; /* Coins arrondis */
+  box-sizing: border-box; /* Inclure la bordure dans la largeur */
 }
 
-button span {
-  display: block;
-  margin-left: 0.3em;
-  transition: all 0.3s ease-in-out;
-}
-
-button svg {
-  display: block;
-  transform-origin: center center;
-  transition: transform 0.3s ease-in-out;
-}
-
-button:hover .svg-wrapper {
-  animation: fly-1 0.6s ease-in-out infinite alternate;
-}
-
-button:hover svg {
-  transform: translateX(1.2em) rotate(45deg) scale(1.1);
-}
-
-button:hover span {
-  transform: translateX(5em);
-}
-
-button:active {
-  transform: scale(0.95);
+/* Styles spécifiques pour les étiquettes des champs de date */
+.inscription label[for="date_debut"],
+.inscription label[for="date_fin"] {
+  display: block; /* Affichage en bloc */
+  margin-bottom: 5px; /* Espacement entre les étiquettes */
+  color: #333; /* Couleur du texte */
+  font-weight: bold; /* Police en gras */
 }
