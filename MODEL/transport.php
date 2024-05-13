@@ -1,5 +1,5 @@
 <?php
-include_once("../connexion.php");
+require_once '../config.php';
 class transport
 {
     public int $ID_transport;
@@ -9,7 +9,7 @@ class transport
     public function read_all_transport()
     {
         try {
-            $pdo = connexion::getConnexion();
+            $pdo = config::getConnexion();
 
             if (!$pdo) {
                 throw new Exception("Failed to connect to the database.");
@@ -26,7 +26,7 @@ class transport
     public function read_emploi_by_transport_id($ID_Emploi) 
     {
         try {
-            $pdo = connexion::getConnexion();
+            $pdo = config::getConnexion();
             if (!$pdo) {
                 throw new Exception("Failed to connect to the database.");
             }
@@ -48,7 +48,7 @@ class transport
     public function read_transport_by_id($ID_transport) 
     {
         try {
-            $pdo = connexion::getConnexion();
+            $pdo = config::getConnexion();
             if (!$pdo) {
                 throw new Exception("Failed to connect to the database.");
             }
@@ -63,7 +63,7 @@ class transport
         }
     }
     public function create_transport($ID_transport,$type,$matricule,$date_debut){
-        $pdo = connexion::getConnexion();
+        $pdo = config::getConnexion();
         try {
             $query = $pdo->prepare('INSERT INTO `transport`(`ID_transport`, `type`, `matricule`, `date_debut`) VALUES (:ID_transport, :type, :matricule, :date_debut)');
             $query->bindParam(':ID_transport', $ID_transport);
@@ -80,7 +80,7 @@ class transport
     
     public function update_transport($ID_transport, $type, $matricule, $date_debut)
     {
-        $pdo = connexion::getConnexion();
+        $pdo = config::getConnexion();
         try {
             $query = $pdo->prepare("UPDATE TRANSPORT SET type  = :type, matricule = :matricule, date_debut = :date_debut WHERE ID_transport = :ID_transport");
             $query->bindParam(':ID_transport', $ID_transport);
@@ -98,7 +98,7 @@ class transport
     
     public function delete_transport($ID_transport)
     {
-        $pdo = connexion::getConnexion();
+        $pdo = config::getConnexion();
         try {
             $query = $pdo->prepare("DELETE FROM `transport` WHERE `ID_transport` = :ID_transport");
             $query->bindParam(':ID_transport', $ID_transport);
