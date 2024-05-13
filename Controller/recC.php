@@ -1,6 +1,6 @@
 <?php
 include '../config.php';
-include '../Models/rec.php';
+include '../Model/rec.php';
 
 class recC
 {
@@ -16,7 +16,26 @@ class recC
         }
     }
 
- 
+ // Fonction pour compter les mots inappropriés
+function countInappropriateWords($text) {
+    // Liste des mots inappropriés
+    $inappropriateWords = array("test", "action", "level"); // Ajoutez ici les mots inappropriés que vous souhaitez détecter
+
+    // Convertir le texte en minuscules pour une correspondance insensible à la casse
+    $text = strtolower($text);
+
+    // Initialiser le compteur de mots inappropriés
+    $count = 0;
+
+    // Parcourir la liste des mots inappropriés
+    foreach ($inappropriateWords as $word) {
+        // Compter le nombre d'occurrences de chaque mot inapproprié dans le texte
+        $count += substr_count($text, strtolower($word));
+    }
+
+    // Retourner le nombre total de mots inappropriés trouvés dans le texte
+    return $count;
+}
 
     function deleterec($Id_R)
     {
@@ -99,4 +118,6 @@ class recC
         echo $e->getMessage();
     }
 }
+
 }
+?>

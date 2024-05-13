@@ -1,6 +1,6 @@
 <?php
 include '../config.php';
-include '../Models/rep.php';
+include '../Model/rep.php';
 
 
 class repR
@@ -47,26 +47,26 @@ class repR
         }
     }
 
-    function updaterep($Reponse, $eval, $Id_Rep)
-{
-    try {
-        $db = Config::getConnexion();
-        $query = $db->prepare(
-            'UPDATE reponse SET 
-                description = :description, 
-                eval = :eval
-            WHERE Id_Rep = :Id_Rep'
-        );
-        $query->execute([
-            'description' => $Reponse,
-            'eval' => $eval,
-            'Id_Rep' => $Id_Rep
-        ]);
-        echo $query->rowCount() . " records UPDATED successfully <br>";
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
+    function updaterep($description, $eval, $Id_Rep)
+    {
+        try {
+            $db = Config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE reponse SET 
+                    description = :description, 
+                    eval = :eval
+                WHERE Id_Rep = :Id_Rep'
+            );
+            $query->execute([
+                'description' => $description, // Utiliser $description au lieu de $Reponse
+                'eval' => $eval,
+                'Id_Rep' => $Id_Rep
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully ";
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
-}
 
 
     function showrep($Id_Rep)
@@ -86,8 +86,8 @@ class repR
     {
         try {
             $pdo = config::getConnexion();
-            $query = $pdo->prepare("SELECT * FROM reclamation WHERE reponse_id = :id"); // Assurez-vous que reponse_id est la clé étrangère vers la table "reponse"
-            $query->execute(['id' => $Id_Rep]);
+            $query = $pdo->prepare("SELECT * FROM reclamation WHERE Id_R = :Id_R"); // Assurez-vous que reponse_id est la clé étrangère vers la table "reponse"
+            $query->execute(['Id_R' => $Id_Rep]);
             return $query->fetchAll();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -105,5 +105,7 @@ class repR
             echo $e->getMessage();
         }
     }
+
+
 
 }
