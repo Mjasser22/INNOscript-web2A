@@ -6,11 +6,11 @@ class userC {
     public function adduser($user) {
         try {
             $db = config::getConnexion();
-                        
-            $sql = "INSERT INTO user (id,nom, prenom, adresse, email,password,telephone,num_passport,genre,pays) VALUES (:id,:nom, :prenom, :adresse, :email,:password,:telephone,:num_passport,:genre,:pays)";
+                            
+            $sql = "INSERT INTO user (id, nom, prenom, adresse, email, password, telephone, num_passport, genre, pays) VALUES (:id, :nom, :prenom, :adresse, :email, :password, :telephone, :num_passport, :genre, :pays)";
             $query = $db->prepare($sql);
             $query->execute([
-                'id'=>$user->getid(),
+                'id' => $user->getid(),
                 'nom' => $user->getNom(),
                 'prenom' => $user->getPrenom(),
                 'adresse' => $user->getAdresse(),
@@ -19,10 +19,9 @@ class userC {
                 'telephone' => $user->getTelephone(),
                 'num_passport' => $user->getNumPassport(),
                 'genre' => $user->getGenre(),
-                'pays' => $user->getPays()
-
+                'pays' => $user->getPays(),
             ]);
-                        
+                            
             return true; // Succès de l'insertion
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -139,7 +138,6 @@ function updateEmploye($user, $id)
         $db = config::getConnexion();
         $query = $db->prepare(
             'UPDATE user SET 
-                id = :id, 
                 nom = :nom, 
                 prenom = :prenom, 
                 adresse = :adresse,
@@ -148,8 +146,9 @@ function updateEmploye($user, $id)
                 telephone = :telephone, 
                 num_passport = :num_passport,
                 genre = :genre,
-                pays = :pays             
-            WHERE id= :id'
+                pays = :pays,
+                verif = :verif            
+            WHERE id = :id'
         );
         $query->execute([
             'id' => $id,
@@ -161,14 +160,14 @@ function updateEmploye($user, $id)
             'telephone' => $user->getTelephone(),
             'num_passport' => $user->getNumPassport(),
             'genre' => $user->getGenre(),
-            'pays' => $user->getPays()
+            'pays' => $user->getPays(),
+            'verif' => $user->getVerif()
         ]);
         echo $query->rowCount() . " records UPDATED successfully <br>";
     } catch (PDOException $e) {
         $e->getMessage();
     }
 }
-
 function showEmploye($id)
 {
     $sql = "SELECT * from user where id = $id";
@@ -215,8 +214,92 @@ function chercher_num_passport($id)
         return NULL;
     }
 }
+function chercher_verif($id)
+{
+    // Connexion à la base de données
+    $db = config::getConnexion();
+    
+    $search_query = "SELECT verif FROM user WHERE id = :id";
+    $stmt = $db->prepare($search_query);
+    $stmt->execute(array(':id' => $id));
+    
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['verif']; //  le nom de l'utilisateur
+    } else {
+        return NULL;
+    }
+}
+function chercher_mdp($adresse)
+{
+    // Connexion à la base de données
+    $db = config::getConnexion();
+    
+    $search_query = "SELECT password FROM user WHERE adresse = :adresse";
+    $stmt = $db->prepare($search_query);
+    $stmt->execute(array(':adresse' => $adresse));
+    
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['password']; 
+    } else {
+        return NULL; 
+    }
+}
+function chercher_id_user($id)
+{
+    $db = config::getConnexion();
+    
+    $search_query = "SELECT id FROM user WHERE id = :id";
+    $stmt = $db->prepare($search_query);
+    $stmt->execute(array(':id' => $id));
+    
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['id']; //  le nom de l'utilisateur
+    } else {
+        return NULL;
+    }
+}
+public function tri() {
+    // Récupérer la liste des utilisateurs
+    $list = $this->listEmployes();
 
+    // Fonction de comparaison pour le tri
+    function compareByID($a, $b) {
+        return $a['id'] - $b['id'];
+    }
 
+    // Trier la liste des utilisateurs en utilisant la fonction de comparaison
+    usort($list, 'compareByID');
+
+    // Retourner la liste triée
+    return $list;
+}
+function listEmployes1()
+{
+    $sql = "SELECT * FROM user order by id";
+    $db = config::getConnexion();
+    try {
+        $liste = $db->query($sql);
+        return $liste;
+    } catch (Exception $e) {
+        die('Error:' . $e->getMessage());
+    }
+}
+function deleteimg($id)
+    {
+        $sql = "DELETE FROM images WHERE id_u = :id";
+        $db = config::getConnexion();
+        $req = $db->prepare($sql);
+        $req->bindValue(':id', $id);
+
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Error:' . $e->getMessage());
+        }
+    }
 
   
 }
